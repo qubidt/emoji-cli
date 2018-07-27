@@ -108,7 +108,7 @@ emoji::emoji_get() {
     cat <"$EMOJI_CLI_DICT" \
         | jq -r '.[]|"\(.emoji) \(":" + .aliases[0] + ":")"' \
         | eval "$_EMOJI_CLI_FILTER" \
-        | awk '{print $2}'
+        | awk '{print $1}'
 }
 
 emoji::emoji_get_with_tag() {
@@ -129,7 +129,7 @@ emoji::emoji_get_with_tag() {
     fi | sort -k2,2 \
         | uniq \
         | eval "$_EMOJI_CLI_FILTER" \
-        | awk '{print $2}'
+        | awk '{print $1}'
 }
 
 emoji::cli() {
